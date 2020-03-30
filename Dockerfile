@@ -2,7 +2,7 @@ ARG PHP_VERSION="php:7.3.5-fpm-alpine"
 FROM ${PHP_VERSION}
 
 ARG TZ="Asia/Shanghai"
-ARG PHP_EXTENSIONS="pdo_mysql,mysqli,mbstring,gd,curl,redis,mongodb,swoole,imap,pcntl,soap,opcache,gettext,imagick,mcrypt,amqp,memcached,varnish"
+ARG PHP_EXTENSIONS="pdo_mysql,zip,mysql,mysqli,mbstring,gd,curl,redis,mongodb,swoole,imap,pcntl,soap,opcache,gettext,imagick,mcrypt,amqp,memcached,varnish"
 ARG CONTAINER_PACKAGE_URL="mirrors.aliyun.com"
 
 
