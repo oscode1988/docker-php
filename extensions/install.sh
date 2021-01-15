@@ -69,6 +69,18 @@ installExtensionFromTgz()
     docker-php-ext-enable ${extensionName} $2
 }
 
+installExtensionFromTgzOpensslSwoole()
+{
+    tgzName=$1
+    extensionName="${tgzName%%-*}"
+
+    mkdir ${extensionName}
+    tar -xf ${tgzName}.tgz -C ${extensionName} --strip-components=1
+    ( cd ${extensionName} && phpize && ./configure --enable-openssl --enable-swoole-curl  && make ${MC} && make install )
+
+    docker-php-ext-enable ${extensionName} $2
+}
+
 installExtensionFromTgzOpenssl()
 {
     tgzName=$1
@@ -513,7 +525,7 @@ if [[ -z "${EXTENSIONS##*,swoole,*}" ]]; then
     isPhpVersionGreaterOrEqual 7 0
 
     if [[ "$?" = "1" ]]; then
-        installExtensionFromTgzOpenssl swoole-4.4.2
+        installExtensionFromTgzOpensslSwoole swoole-4.6.1
     else
         installExtensionFromTgzOpenssl swoole-2.0.11
     fi
