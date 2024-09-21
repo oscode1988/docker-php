@@ -2,7 +2,7 @@ ARG PHP_VERSION="php:7.3.5-fpm-alpine"
 FROM ${PHP_VERSION}
 
 ARG TZ="Asia/Shanghai"
-ARG PHP_EXTENSIONS="pdo_mysql,zip,mysql,mysqli,mbstring,gd,curl,redis,mongodb,swoole,imap,pcntl,soap,opcache,gettext,imagick,mcrypt,amqp,memcached"
+ARG PHP_EXTENSIONS="pdo_mysql,zip,mysql,mysqli,mbstring,gd,curl,redis,mongodb,swoole,imap,pcntl,soap,opcache,imagick,mcrypt,amqp,memcached"
 ARG CONTAINER_PACKAGE_URL="mirrors.aliyun.com"
 
 
@@ -18,7 +18,6 @@ RUN sed -i "s/dl-cdn.alpinelinux.org/${CONTAINER_PACKAGE_URL}/g" /etc/apk/reposi
       libtool \
       make \
       curl-dev \
-      gettext-dev \
       linux-headers \
     \
 	&& chmod +x install.sh \
